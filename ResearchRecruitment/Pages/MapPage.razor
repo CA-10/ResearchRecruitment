@@ -1,0 +1,85 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+<MudContainer>
+	<MudText Align="Align.Center">Find Participants for your Research</MudText>
+
+	<div class="d-flex">
+
+	</div>
+
+	<div id="p5-container"></div>
+</MudContainer>
+
+@code
+{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) { return; }
+
+        string apiDataJson = @"[
+  { ""name"": ""Intro to Programming"", ""embedding_x"": 0.12, ""embedding_y"": 0.45, ""summary"": ""Learn programming fundamentals with Python."" },
+  { ""name"": ""Data Structures"", ""embedding_x"": -0.34, ""embedding_y"": 0.67, ""summary"": ""Understand arrays, linked lists, and trees."" },
+  { ""name"": ""Web Development"", ""embedding_x"": 0.88, ""embedding_y"": -0.21, ""summary"": ""Build dynamic web apps using JavaScript and HTML."" },
+  { ""name"": ""Machine Learning"", ""embedding_x"": 0.56, ""embedding_y"": -0.9, ""summary"": ""Supervised and unsupervised learning concepts."" },
+  { ""name"": ""Deep Learning"", ""embedding_x"": 0.75, ""embedding_y"": -0.75, ""summary"": ""Introduction to neural networks and TensorFlow."" },
+  { ""name"": ""Algorithms"", ""embedding_x"": -0.45, ""embedding_y"": 0.32, ""summary"": ""Algorithm design and complexity analysis."" },
+  { ""name"": ""Operating Systems"", ""embedding_x"": -0.76, ""embedding_y"": 0.14, ""summary"": ""Processes, threads, and memory management."" },
+  { ""name"": ""Databases"", ""embedding_x"": -0.64, ""embedding_y"": -0.12, ""summary"": ""Relational and NoSQL database fundamentals."" },
+  { ""name"": ""Networking"", ""embedding_x"": -0.52, ""embedding_y"": 0.85, ""summary"": ""Internet protocols and network architecture."" },
+  { ""name"": ""Cyber Security"", ""embedding_x"": -0.85, ""embedding_y"": 0.56, ""summary"": ""Learn how to protect systems and data."" },
+  { ""name"": ""Cloud Computing"", ""embedding_x"": 0.35, ""embedding_y"": -0.65, ""summary"": ""Introduction to AWS, Azure, and cloud models."" },
+  { ""name"": ""Mobile Development"", ""embedding_x"": 0.94, ""embedding_y"": 0.18, ""summary"": ""Create mobile apps with Flutter and React Native."" },
+  { ""name"": ""Software Engineering"", ""embedding_x"": -0.24, ""embedding_y"": 0.12, ""summary"": ""Software design, testing, and maintenance."" },
+  { ""name"": ""Game Design"", ""embedding_x"": 0.67, ""embedding_y"": 0.74, ""summary"": ""Build interactive 2D and 3D games."" },
+  { ""name"": ""UX/UI Design"", ""embedding_x"": 0.58, ""embedding_y"": 0.62, ""summary"": ""Principles of design and user experience."" },
+  { ""name"": ""Artificial Intelligence"", ""embedding_x"": 0.42, ""embedding_y"": -0.78, ""summary"": ""Explore intelligent systems and search algorithms."" },
+  { ""name"": ""Data Visualization"", ""embedding_x"": 0.33, ""embedding_y"": 0.91, ""summary"": ""Create compelling data visualizations with D3.js."" },
+  { ""name"": ""Data Science"", ""embedding_x"": 0.61, ""embedding_y"": -0.15, ""summary"": ""Data cleaning, exploration, and statistical modeling."" },
+  { ""name"": ""Big Data"", ""embedding_x"": 0.55, ""embedding_y"": -0.25, ""summary"": ""Working with distributed data systems like Hadoop."" },
+  { ""name"": ""Quantum Computing"", ""embedding_x"": -0.9, ""embedding_y"": -0.5, ""summary"": ""Understand qubits and quantum gates."" },
+  { ""name"": ""DevOps"", ""embedding_x"": 0.11, ""embedding_y"": -0.65, ""summary"": ""Continuous integration and deployment."" },
+  { ""name"": ""Parallel Computing"", ""embedding_x"": -0.45, ""embedding_y"": -0.77, ""summary"": ""Distributed computation and concurrency."" },
+  { ""name"": ""Human-Computer Interaction"", ""embedding_x"": 0.76, ""embedding_y"": 0.5, ""summary"": ""Designing intuitive digital interfaces."" },
+  { ""name"": ""Computer Graphics"", ""embedding_x"": 0.82, ""embedding_y"": 0.31, ""summary"": ""Rendering, shaders, and animation."" },
+  { ""name"": ""Compiler Design"", ""embedding_x"": -0.72, ""embedding_y"": -0.43, ""summary"": ""Lexical analysis and code generation."" },
+  { ""name"": ""Cryptography"", ""embedding_x"": -0.88, ""embedding_y"": 0.4, ""summary"": ""Encryption algorithms and secure communications."" },
+  { ""name"": ""Numerical Methods"", ""embedding_x"": 0.28, ""embedding_y"": -0.48, ""summary"": ""Solving equations with computational techniques."" },
+  { ""name"": ""Statistics"", ""embedding_x"": 0.22, ""embedding_y"": 0.59, ""summary"": ""Probability, sampling, and hypothesis testing."" },
+  { ""name"": ""Linear Algebra"", ""embedding_x"": -0.12, ""embedding_y"": -0.85, ""summary"": ""Vectors, matrices, and eigenvalues."" },
+  { ""name"": ""Discrete Math"", ""embedding_x"": -0.25, ""embedding_y"": 0.72, ""summary"": ""Logic, sets, graphs, and combinatorics."" },
+  { ""name"": ""Econometrics"", ""embedding_x"": 0.44, ""embedding_y"": 0.82, ""summary"": ""Quantitative analysis for economic data."" },
+  { ""name"": ""Reinforcement Learning"", ""embedding_x"": 0.77, ""embedding_y"": -0.32, ""summary"": ""Agents, environments, and reward systems."" },
+  { ""name"": ""Natural Language Processing"", ""embedding_x"": 0.68, ""embedding_y"": -0.61, ""summary"": ""Text analysis and transformer models."" },
+  { ""name"": ""Computer Vision"", ""embedding_x"": 0.91, ""embedding_y"": -0.45, ""summary"": ""Object detection and image recognition."" },
+  { ""name"": ""Ethics in Technology"", ""embedding_x"": -0.54, ""embedding_y"": 0.48, ""summary"": ""Social and ethical impacts of computing."" },
+  { ""name"": ""Blockchain"", ""embedding_x"": 0.33, ""embedding_y"": -0.7, ""summary"": ""Smart contracts and decentralized applications."" },
+  { ""name"": ""Augmented Reality"", ""embedding_x"": 0.83, ""embedding_y"": 0.4, ""summary"": ""Integrating virtual content into real environments."" },
+  { ""name"": ""Virtual Reality"", ""embedding_x"": 0.87, ""embedding_y"": 0.55, ""summary"": ""Immersive simulations with 3D environments."" },
+  { ""name"": ""Digital Signal Processing"", ""embedding_x"": -0.42, ""embedding_y"": -0.62, ""summary"": ""Fourier transforms and filtering."" },
+  { ""name"": ""Embedded Systems"", ""embedding_x"": -0.66, ""embedding_y"": -0.3, ""summary"": ""Microcontrollers and IoT devices."" },
+  { ""name"": ""Robotics"", ""embedding_x"": 0.74, ""embedding_y"": 0.12, ""summary"": ""Mechanics, sensors, and path planning."" },
+  { ""name"": ""Information Retrieval"", ""embedding_x"": 0.19, ""embedding_y"": -0.52, ""summary"": ""Search engines and ranking algorithms."" },
+  { ""name"": ""Bioinformatics"", ""embedding_x"": 0.58, ""embedding_y"": 0.25, ""summary"": ""Applying computation to biological data."" },
+  { ""name"": ""Sociotechnical Systems"", ""embedding_x"": -0.44, ""embedding_y"": 0.23, ""summary"": ""Interaction between people and technologies."" },
+  { ""name"": ""Cloud Security"", ""embedding_x"": 0.24, ""embedding_y"": -0.82, ""summary"": ""Protecting data and services in the cloud."" },
+  { ""name"": ""Computer Architecture"", ""embedding_x"": -0.59, ""embedding_y"": -0.56, ""summary"": ""Instruction sets and hardware design."" },
+  { ""name"": ""Digital Logic Design"", ""embedding_x"": -0.35, ""embedding_y"": -0.33, ""summary"": ""Circuits, logic gates, and design automation."" },
+  { ""name"": ""Functional Programming"", ""embedding_x"": 0.49, ""embedding_y"": 0.38, ""summary"": ""Declarative coding with functions and immutability."" },
+  { ""name"": ""Cognitive Science"", ""embedding_x"": 0.17, ""embedding_y"": 0.72, ""summary"": ""Exploring mind, intelligence, and behavior."" },
+  { ""name"": ""Social Network Analysis"", ""embedding_x"": -0.23, ""embedding_y"": 0.91, ""summary"": ""Graph theory applied to social data."" },
+  { ""name"": ""Game Theory"", ""embedding_x"": 0.05, ""embedding_y"": -0.91, ""summary"": ""Decision-making and strategy in competitive systems."" }
+]";
+
+
+        string groupDataJson = @"[
+  { ""cluster_name"": ""AI & Machine Learning"", ""center"": [0.6, -0.5], ""convex_hull"": [[0.4, -0.9], [0.9, -0.8], [0.8, -0.3], [0.5, -0.4]] },
+  { ""cluster_name"": ""Systems & Networking"", ""center"": [-0.6, 0.3], ""convex_hull"": [[-0.9, -0.1], [-0.8, 0.6], [-0.3, 0.8], [-0.2, 0.2]] },
+  { ""cluster_name"": ""Data Science"", ""center"": [0.4, 0.8], ""convex_hull"": [[0.1, 0.5], [0.6, 1.0], [0.9, 0.7], [0.5, 0.6]] },
+  { ""cluster_name"": ""Security & Privacy"", ""center"": [-0.8, 0.5], ""convex_hull"": [[-1.0, 0.2], [-0.9, 0.8], [-0.6, 0.9], [-0.5, 0.3]] },
+  { ""cluster_name"": ""Design & Interaction"", ""center"": [0.7, 0.4], ""convex_hull"": [[0.5, 0.2], [0.9, 0.2], [1.0, 0.6], [0.6, 0.7]] }
+]";
+
+        await JS.InvokeVoidAsync("renderingCode.start", apiDataJson, groupDataJson);
+    }
+}
