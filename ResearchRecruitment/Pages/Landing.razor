@@ -1,16 +1,6 @@
 ﻿@page "/"
 @using MudBlazor
 
-<MudAppBar Color="Color.Primary" Elevation="0" Class="px-6">
-    <MudText Typo="Typo.h6" Style="font-weight: 700; color: white;">
-        ResearchConnect
-    </MudText>
-    <MudSpacer />
-    <MudButton Href="#home" Variant="Variant.Text" Style="font-weight: 500; color: white;">Home</MudButton>
-    <MudButton Href="#about" Variant="Variant.Text" Style="font-weight: 500; color: white">About</MudButton>
-    <MudButton Href="#login" Variant="Variant.Filled" Style="border-radius: 20px; padding: 8px 24px; color: white">Login</MudButton>
-</MudAppBar>
-
 <div class="hero-section">
     <MudContainer MaxWidth="MaxWidth.Large" Style="position: relative; z-index: 1;">
         <MudStack AlignItems="AlignItems.Center" Spacing="4">
@@ -54,7 +44,8 @@
                                Color="Color.Primary"
                                FullWidth="true"
                                Size="Size.Large"
-                               Style="border-radius: 12px; margin-top: 1rem; font-weight: 600;">
+                               Style="border-radius: 12px; margin-top: 1rem; font-weight: 600;"
+                               Href="/register-researcher">
                         Register as Researcher
                     </MudButton>
                 </MudStack>
