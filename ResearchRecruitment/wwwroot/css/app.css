@@ -75,3 +75,55 @@
 code {
     color: #c02d76;
 }
+
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    min-height: 70vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+    .hero-section::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') !important;
+        opacity: 0.3 !important;
+    }
+
+.logo-container {
+    width: 120px !important;
+    height: 120px !important;
+    background: white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important;
+    margin-bottom: 2rem !important;
+}
+
+.action-card {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.action-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
+}
+
+.feature-badge {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 50px !important;
+    color: white !important;
+    display: inline-block !important;
+    margin-top: 1rem !important;
+}

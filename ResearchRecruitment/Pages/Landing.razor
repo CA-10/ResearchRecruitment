@@ -1,0 +1,169 @@
+﻿@page "/"
+@using MudBlazor
+
+<MudAppBar Color="Color.Primary" Elevation="0" Class="px-6">
+    <MudText Typo="Typo.h6" Style="font-weight: 700; color: white;">
+        ResearchConnect
+    </MudText>
+    <MudSpacer />
+    <MudButton Href="#home" Variant="Variant.Text" Style="font-weight: 500; color: white;">Home</MudButton>
+    <MudButton Href="#about" Variant="Variant.Text" Style="font-weight: 500; color: white">About</MudButton>
+    <MudButton Href="#login" Variant="Variant.Filled" Style="border-radius: 20px; padding: 8px 24px; color: white">Login</MudButton>
+</MudAppBar>
+
+<div class="hero-section">
+    <MudContainer MaxWidth="MaxWidth.Large" Style="position: relative; z-index: 1;">
+        <MudStack AlignItems="AlignItems.Center" Spacing="4">
+
+            <div class="logo-container">
+                <MudIcon Icon="@Icons.Material.Filled.Science" Size="Size.Large" Style="font-size: 4rem; color: #667eea;" />
+            </div>
+
+            <MudText Typo="Typo.h2" Align="Align.Center" Style="color: white; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                Research Recruitment Platform
+            </MudText>
+
+            <MudText Typo="Typo.h4" Align="Align.Center" Style="color: rgba(255,255,255,0.95); font-weight: 500; max-width: 800px; line-height: 1.6;">
+                Connecting Research and Participants Through an Interactive Map
+            </MudText>
+
+            <MudText Typo="Typo.h6" Align="Align.Center" Style="color: rgba(255,255,255,0.85); font-weight: 300; font-style: italic;">
+                Recruit for research projects using a simple, visual platform
+            </MudText>
+        </MudStack>
+    </MudContainer>
+</div>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="my-12">
+    <MudGrid Spacing="4" Justify="Justify.Center">
+
+        <!-- Researcher Card -->
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Class="action-card pa-6" Elevation="3" Style="border-radius: 16px; height: 100%;">
+                <MudStack AlignItems="AlignItems.Center" Spacing="3">
+                    <MudAvatar Color="Color.Primary" Size="Size.Large" Style="width: 80px; height: 80px;">
+                        <MudIcon Icon="@Icons.Material.Filled.Psychology" Size="Size.Large" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h5" Align="Align.Center" Style="font-weight: 600;">
+                        For Researchers
+                    </MudText>
+                    <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary">
+                        Post your studies and find qualified participants through our interactive map interface
+                    </MudText>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               FullWidth="true"
+                               Size="Size.Large"
+                               Style="border-radius: 12px; margin-top: 1rem; font-weight: 600;">
+                        Register as Researcher
+                    </MudButton>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Find Participant Card -->
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Class="action-card pa-6" Elevation="3" Style="border-radius: 16px; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <MudStack AlignItems="AlignItems.Center" Spacing="3">
+                    <MudAvatar Style="background: rgba(255,255,255,0.3); width: 80px; height: 80px;">
+                        <MudIcon Icon="@Icons.Material.Filled.PersonSearch" Size="Size.Large" Style="color: white;" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h5" Align="Align.Center" Style="font-weight: 600; color: white;">
+                        Find Participants
+                    </MudText>
+                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: rgba(255,255,255,0.9);">
+                        Search our database of eager participants ready to contribute to your research
+                    </MudText>
+                    <MudButton Variant="Variant.Filled"
+                               FullWidth="true"
+                               Size="Size.Large"
+                               Style="background: white; color: #667eea; border-radius: 12px; margin-top: 1rem; font-weight: 600;">
+                        Start Searching
+                    </MudButton>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Participant Card -->
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Class="action-card pa-6" Elevation="3" Style="border-radius: 16px; height: 100%;">
+                <MudStack AlignItems="AlignItems.Center" Spacing="3">
+                    <MudAvatar Color="Color.Secondary" Size="Size.Large" Style="width: 80px; height: 80px;">
+                        <MudIcon Icon="@Icons.Material.Filled.Groups" Size="Size.Large" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h5" Align="Align.Center" Style="font-weight: 600;">
+                        For Participants
+                    </MudText>
+                    <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary">
+                        Join studies in your area, contribute to science, and earn rewards for your participation
+                    </MudText>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Secondary"
+                               FullWidth="true"
+                               Size="Size.Large"
+                               Style="border-radius: 12px; margin-top: 1rem; font-weight: 600;">
+                        Register as Participant
+                    </MudButton>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+
+    </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="my-12">
+    <MudPaper Elevation="0" Style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 20px; padding: 3rem; text-align: center;">
+        <MudStack AlignItems="AlignItems.Center" Spacing="2">
+            <MudIcon Icon="@Icons.Material.Filled.CardGiftcard" Size="Size.Large" Style="color: white; font-size: 3rem;" />
+            <MudText Typo="Typo.h4" Style="color: white; font-weight: 700;">
+                Earn Rewards for Participation
+            </MudText>
+            <MudText Typo="Typo.h6" Style="color: rgba(255,255,255,0.95); font-weight: 400; max-width: 600px;">
+                Participants can earn points and redeem rewards for taking part in studies. Make a difference while getting rewarded!
+            </MudText>
+            <MudButton Variant="Variant.Filled"
+                       Size="Size.Large"
+                       Style="background: white; color: #f5576c; border-radius: 12px; margin-top: 1rem; padding: 12px 32px; font-weight: 600;">
+                Learn More About Rewards
+            </MudButton>
+        </MudStack>
+    </MudPaper>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="my-12 pb-12">
+    <MudText Typo="Typo.h3" Align="Align.Center" Style="font-weight: 700; margin-bottom: 3rem;">
+        Why Choose ResearchConnect?
+    </MudText>
+
+    <MudGrid Spacing="6">
+        <MudItem xs="12" md="4">
+            <MudStack AlignItems="AlignItems.Center" Spacing="2">
+                <MudIcon Icon="@Icons.Material.Filled.Map" Color="Color.Primary" Style="font-size: 3rem;" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Style="font-weight: 600;">Interactive Map</MudText>
+                <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary">
+                    Visualize research opportunities geographically and find studies near you
+                </MudText>
+            </MudStack>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudStack AlignItems="AlignItems.Center" Spacing="2">
+                <MudIcon Icon="@Icons.Material.Filled.Security" Color="Color.Primary" Style="font-size: 3rem;" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Style="font-weight: 600;">Secure & Private</MudText>
+                <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary">
+                    Your data is protected with industry-leading security measures
+                </MudText>
+            </MudStack>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudStack AlignItems="AlignItems.Center" Spacing="2">
+                <MudIcon Icon="@Icons.Material.Filled.Speed" Color="Color.Primary" Style="font-size: 3rem;" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Style="font-weight: 600;">Simple & Fast</MudText>
+                <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary">
+                    Quick registration and intuitive interface for seamless experience
+                </MudText>
+            </MudStack>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
