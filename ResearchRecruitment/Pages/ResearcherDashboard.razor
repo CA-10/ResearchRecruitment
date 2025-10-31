@@ -1,0 +1,216 @@
+﻿@page "/researcher-dashboard"
+
+<MudLayout>
+    <!-- Sidebar Drawer -->
+    <MudDrawer @bind-Open="@drawerOpen" Elevation="2" Variant="@DrawerVariant.Persistent" Style="background: #f8f9fa;">
+        <MudDrawerHeader Style="background: white;">
+            <MudStack Spacing="1">
+                <MudText Typo="Typo.h6" Style="font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    ResearchConnect
+                </MudText>
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Researcher Portal</MudText>
+            </MudStack>
+        </MudDrawerHeader>
+        
+        <MudNavMenu Style="padding: 1rem 0.5rem;">
+            <MudNavLink Href="/researcher-dashboard" 
+                        Icon="@Icons.Material.Filled.Dashboard" 
+                        IconColor="Color.Primary"
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                Dashboard
+            </MudNavLink>
+            
+            <MudNavLink Href="/post-study" 
+                        Icon="@Icons.Material.Filled.PostAdd" 
+                        IconColor="Color.Primary"
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                Post a Study
+            </MudNavLink>
+            
+            <MudNavLink Href="/map" 
+                        Icon="@Icons.Material.Filled.PersonSearch" 
+                        IconColor="Color.Primary"
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                Find Participants
+            </MudNavLink>
+            
+            <MudNavLink Href="/invite" 
+                        Icon="@Icons.Material.Filled.Email" 
+                        IconColor="Color.Primary"
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                Invite
+            </MudNavLink>
+            
+            <MudNavLink Href="/contact" 
+                        Icon="@Icons.Material.Filled.ContactMail" 
+                        IconColor="Color.Primary"
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                Contact
+            </MudNavLink>
+            
+            <MudNavLink Href="/profile" 
+                        Icon="@Icons.Material.Filled.Person" 
+                        IconColor="Color.Primary"
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                Profile
+            </MudNavLink>
+            
+            <MudDivider Class="my-4" />
+            
+            <MudNavLink Href="/logout" 
+                        Icon="@Icons.Material.Filled.Logout" 
+                        IconColor="Color.Error"
+                        Style="border-radius: 12px; font-weight: 500;">
+                Logout
+            </MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+
+    <MudAppBar Elevation="1" Style="background: white;">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" 
+                       Color="Color.Default" 
+                       Edge="Edge.Start" 
+                       OnClick="@ToggleDrawer" />
+        <MudSpacer />
+        <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Home</MudButton>
+        <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 600;">Dashboard</MudButton>
+        <MudButton Href="/post-study" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Post a study</MudButton>
+        <MudButton Href="/map" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Find Participants</MudButton>
+        <MudButton Href="/profile" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Profile</MudButton>
+        <MudButton Href="/logout" Variant="Variant.Text" Color="Color.Error" Style="font-weight: 500;">Log out</MudButton>
+    </MudAppBar>
+
+    <MudMainContent Style="background: #f5f7fa;">
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-8">
+            
+            <MudPaper Elevation="0" Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem;">
+                <MudStack Spacing="2">
+                    <MudText Typo="Typo.h4" Style="color: white; font-weight: 700;">
+                        Welcome Dr. Smith!
+                    </MudText>
+
+                    <MudText Typo="Typo.h6" Style="color: rgba(255,255,255,0.95); font-weight: 400;">
+                        You currently have 3 active studies.
+                    </MudText>
+                </MudStack>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-6" Style="border-radius: 20px; min-height: 400px;">
+                <MudStack Spacing="4">
+                    
+                    <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+                        <MudText Typo="Typo.h5" Style="font-weight: 700;">
+                            Active Studies
+                        </MudText>
+                        <MudButton Variant="Variant.Filled" 
+                                   Color="Color.Primary" 
+                                   EndIcon="@Icons.Material.Filled.ArrowForward"
+                                   Href="/post-study"
+                                   Style="border-radius: 12px; font-weight: 600;">
+                            Post a New Study
+                        </MudButton>
+                    </MudStack>
+
+                    <MudDivider />
+
+                    <MudGrid Spacing="4" Class="mt-4">
+                        
+                        <MudItem xs="12" md="6" lg="4">
+                            <MudCard Elevation="3" Style="border-radius: 16px; height: 100%;">
+                                <MudCardContent>
+                                    <MudStack Spacing="2">
+                                        <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start">
+                                            <MudChip T="string" Color="Color.Success" Size="Size.Small" Style="font-weight: 600;">Active</MudChip>
+                                            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" />
+                                        </MudStack>
+                                        <MudText Typo="Typo.h6" Style="font-weight: 600;">
+                                            Study Title Here
+                                        </MudText>
+                                        <MudText Typo="Typo.body2" Color="Color.Secondary">
+                                            Brief description of the research study and its objectives...
+                                        </MudText>
+                                        <MudStack Row="true" Spacing="2" Class="mt-2">
+                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.People">12 Participants</MudChip>
+                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarMonth">30 days</MudChip>
+                                        </MudStack>
+                                    </MudStack>
+                                </MudCardContent>
+                                <MudCardActions>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">View Details</MudButton>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">Manage</MudButton>
+                                </MudCardActions>
+                            </MudCard>
+                        </MudItem>
+
+                        <MudItem xs="12" md="6" lg="4">
+                            <MudCard Elevation="3" Style="border-radius: 16px; height: 100%;">
+                                <MudCardContent>
+                                    <MudStack Spacing="2">
+                                        <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start">
+                                            <MudChip T="string" Color="Color.Success" Size="Size.Small" Style="font-weight: 600;">Active</MudChip>
+                                            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" />
+                                        </MudStack>
+                                        <MudText Typo="Typo.h6" Style="font-weight: 600;">
+                                            Another Study Title
+                                        </MudText>
+                                        <MudText Typo="Typo.body2" Color="Color.Secondary">
+                                            Brief description of the research study and its objectives...
+                                        </MudText>
+                                        <MudStack Row="true" Spacing="2" Class="mt-2">
+                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.People">8 Participants</MudChip>
+                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarMonth">45 days</MudChip>
+                                        </MudStack>
+                                    </MudStack>
+                                </MudCardContent>
+                                <MudCardActions>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">View Details</MudButton>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">Manage</MudButton>
+                                </MudCardActions>
+                            </MudCard>
+                        </MudItem>
+
+                        <MudItem xs="12" md="6" lg="4">
+                            <MudCard Elevation="3" Style="border-radius: 16px; height: 100%;">
+                                <MudCardContent>
+                                    <MudStack Spacing="2">
+                                        <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start">
+                                            <MudChip T="string" Color="Color.Success" Size="Size.Small" Style="font-weight: 600;">Active</MudChip>
+                                            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" />
+                                        </MudStack>
+                                        <MudText Typo="Typo.h6" Style="font-weight: 600;">
+                                            Research Project Name
+                                        </MudText>
+                                        <MudText Typo="Typo.body2" Color="Color.Secondary">
+                                            Brief description of the research study and its objectives...
+                                        </MudText>
+                                        <MudStack Row="true" Spacing="2" Class="mt-2">
+                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.People">15 Participants</MudChip>
+                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarMonth">60 days</MudChip>
+                                        </MudStack>
+                                    </MudStack>
+                                </MudCardContent>
+                                <MudCardActions>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">View Details</MudButton>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">Manage</MudButton>
+                                </MudCardActions>
+                            </MudCard>
+                        </MudItem>
+
+                    </MudGrid>
+
+                </MudStack>
+            </MudPaper>
+
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code
+{
+    bool drawerOpen = true;
+
+    private void ToggleDrawer()
+    {
+        drawerOpen = !drawerOpen;
+    }
+}

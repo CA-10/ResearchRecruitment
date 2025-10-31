@@ -6,26 +6,289 @@
 @inject MapPageViewModel viewModel
 @inject ISnackbar snackbar
 
+<style>
+    canvas
+    {
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>
+
 @if (viewModel.IsLoading)
 {
     <SkeletonLoading />
 }
 else
 {
-    <MudContainer>
-        <MudText Align="Align.Center">Find Participants for your Research</MudText>
+    <MudLayout>
+        <MudDrawer @bind-Open="@drawerOpen" Elevation="2" Variant="@DrawerVariant.Persistent" Style="background: #f8f9fa;">
+            <MudDrawerHeader Style="background: white; padding: 1.5rem;">
+                <MudStack Spacing="1">
+                    <MudText Typo="Typo.h6" Style="font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        ResearchConnect
+                    </MudText>
+                    <MudText Typo="Typo.caption" Color="Color.Secondary">Researcher Portal</MudText>
+                </MudStack>
+            </MudDrawerHeader>
 
-        <div class="d-flex">
-        </div>
+            <MudNavMenu Style="padding: 1rem 0.5rem;">
+                <MudNavLink Href="/researcher-dashboard"
+                            Icon="@Icons.Material.Filled.Dashboard"
+                            IconColor="Color.Primary"
+                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                    Dashboard
+                </MudNavLink>
 
-        <div id="p5-container"></div>
-    </MudContainer>
+                <MudNavLink Href="/post-study"
+                            Icon="@Icons.Material.Filled.PostAdd"
+                            IconColor="Color.Primary"
+                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                    Post a Study
+                </MudNavLink>
+
+                <MudNavLink Href="/find-participants"
+                            Icon="@Icons.Material.Filled.PersonSearch"
+                            IconColor="Color.Primary"
+                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                    Find Participants
+                </MudNavLink>
+
+                <MudNavLink Href="/invite"
+                            Icon="@Icons.Material.Filled.Email"
+                            IconColor="Color.Primary"
+                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                    Invite
+                </MudNavLink>
+
+                <MudNavLink Href="/contact"
+                            Icon="@Icons.Material.Filled.ContactMail"
+                            IconColor="Color.Primary"
+                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                    Contact
+                </MudNavLink>
+
+                <MudNavLink Href="/profile"
+                            Icon="@Icons.Material.Filled.Person"
+                            IconColor="Color.Primary"
+                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                    Profile
+                </MudNavLink>
+
+                <MudDivider Class="my-4" />
+
+                <MudNavLink Href="/logout"
+                            Icon="@Icons.Material.Filled.Logout"
+                            IconColor="Color.Error"
+                            Style="border-radius: 12px; font-weight: 500;">
+                    Logout
+                </MudNavLink>
+            </MudNavMenu>
+        </MudDrawer>
+
+        <MudAppBar Elevation="1" Style="background: white;">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                           Color="Color.Default"
+                           Edge="Edge.Start"
+                           OnClick="@ToggleDrawer" />
+            <MudSpacer />
+            <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Home</MudButton>
+            <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Dashboard</MudButton>
+            <MudButton Href="/post-study" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Post a Study</MudButton>
+            <MudButton Href="/find-participants" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 600;">Find Participants</MudButton>
+            <MudButton Href="/profile" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Profile</MudButton>
+            <MudButton Href="/logout" Variant="Variant.Text" Color="Color.Error" Style="font-weight: 500;">Log out</MudButton>
+        </MudAppBar>
+
+        <MudMainContent Style="background: #f5f7fa;">
+            <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="my-6">
+
+                <MudStack Spacing="2" Class="mb-6">
+                    <MudText Typo="Typo.h4" Style="font-weight: 700;">
+                        Find Participants for Your Research
+                    </MudText>
+                    <MudText Typo="Typo.body1" Color="Color.Secondary" Style="font-style: italic;">
+                        "Use filters or the map to locate suitable participants for your study."
+                    </MudText>
+                </MudStack>
+
+                <MudPaper Elevation="2" Class="pa-4 mb-4" Style="border-radius: 16px;">
+                    <MudText Typo="Typo.h6" Class="mb-3" Style="font-weight: 600;">Search by:</MudText>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12" sm="6" md="3">
+                            <MudSelect @bind-Value="selectedStudy"
+                                       Label="Study"
+                                       Variant="Variant.Outlined"
+                                       Style="border-radius: 12px;"
+                                       AnchorOrigin="Origin.BottomCenter">
+                                <MudSelectItem Value="@("Study 1")">Study 1</MudSelectItem>
+                                <MudSelectItem Value="@("Study 2")">Study 2</MudSelectItem>
+                                <MudSelectItem Value="@("Study 3")">Study 3</MudSelectItem>
+                            </MudSelect>
+                        </MudItem>
+
+                        <MudItem xs="12" sm="6" md="3">
+                            <MudTextField @bind-Value="location"
+                                          Label="Location"
+                                          Variant="Variant.Outlined"
+                                          Style="border-radius: 12px;" />
+                        </MudItem>
+
+                        <MudItem xs="12" sm="6" md="3">
+                            <MudSelect @bind-Value="selectedAgeGroup"
+                                       Label="Age Group"
+                                       Variant="Variant.Outlined"
+                                       Style="border-radius: 12px;"
+                                       AnchorOrigin="Origin.BottomCenter">
+                                <MudSelectItem Value="@("18-25")">18-25</MudSelectItem>
+                                <MudSelectItem Value="@("26-35")">26-35</MudSelectItem>
+                                <MudSelectItem Value="@("36-45")">36-45</MudSelectItem>
+                                <MudSelectItem Value="@("46-60")">46-60</MudSelectItem>
+                                <MudSelectItem Value="@("60+")">60+</MudSelectItem>
+                            </MudSelect>
+                        </MudItem>
+
+                        <MudItem xs="12" sm="6" md="3">
+                            <MudTextField @bind-Value="interest"
+                                          Label="Interest"
+                                          Variant="Variant.Outlined"
+                                          Style="border-radius: 12px;" />
+                        </MudItem>
+                    </MudGrid>
+                </MudPaper>
+
+                <MudGrid Spacing="4">
+
+                    <MudItem xs="12" lg="7">
+                        <MudPaper Elevation="2" Class="pa-4" Style="border-radius: 16px; min-height: 600px;">
+                            <MudText Typo="Typo.h6" Class="mb-3" Style="font-weight: 600;">Interactive Map</MudText>
+                            <div id="p5-container" style="width: 100%; height: 550px;"></div>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="12" lg="5">
+                        <MudPaper Elevation="2" Class="pa-6" Style="border-radius: 16px; height: 600px;">
+                            <MudStack Spacing="4">
+
+                                <MudText Typo="Typo.h6" Style="font-weight: 600;">Participant Details</MudText>
+
+                                <MudDivider />
+
+                                @if (selectedParticipant != null)
+                                {
+                                    <MudStack Spacing="3">
+                                        <MudStack Spacing="1">
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Participant Name</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Name"
+                                                          Variant="Variant.Outlined"
+                                                          ReadOnly="true"
+                                                          Style="border-radius: 8px;" />
+                                        </MudStack>
+
+                                        <MudStack Spacing="1">
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Age</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Age"
+                                                          Variant="Variant.Outlined"
+                                                          ReadOnly="true"
+                                                          Style="border-radius: 8px;" />
+                                        </MudStack>
+
+                                        <MudStack Spacing="1">
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Location</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Location"
+                                                          Variant="Variant.Outlined"
+                                                          ReadOnly="true"
+                                                          Style="border-radius: 8px;" />
+                                        </MudStack>
+
+                                        <MudStack Spacing="1">
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Interests</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Interests"
+                                                          Variant="Variant.Outlined"
+                                                          ReadOnly="true"
+                                                          Lines="3"
+                                                          Style="border-radius: 8px;" />
+                                        </MudStack>
+
+                                        <MudStack Row="true" Spacing="2" Class="mt-4">
+                                            <MudButton Variant="Variant.Filled"
+                                                       Color="Color.Primary"
+                                                       StartIcon="@Icons.Material.Filled.Email"
+                                                       FullWidth="true"
+                                                       Style="border-radius: 12px; font-weight: 600;">
+                                                Invite
+                                            </MudButton>
+                                            <MudButton Variant="Variant.Outlined"
+                                                       Color="Color.Primary"
+                                                       StartIcon="@Icons.Material.Filled.ContactMail"
+                                                       FullWidth="true"
+                                                       Style="border-radius: 12px; font-weight: 600;">
+                                                Contact
+                                            </MudButton>
+                                        </MudStack>
+                                    </MudStack>
+                                }
+                                else
+                                {
+                                    <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Style="height: 100%;">
+                                        <MudIcon Icon="@Icons.Material.Filled.PersonSearch" Size="Size.Large" Style="font-size: 4rem; color: #ccc;" />
+                                        <MudText Typo="Typo.body1" Color="Color.Secondary" Align="Align.Center">
+                                            Select a participant on the map to view details
+                                        </MudText>
+                                    </MudStack>
+                                }
+
+                            </MudStack>
+                        </MudPaper>
+                    </MudItem>
+
+                </MudGrid>
+
+                <MudButton Variant="Variant.Text"
+                           Color="Color.Default"
+                           StartIcon="@Icons.Material.Filled.ArrowBack"
+                           Href="/post-study"
+                           Class="mt-6"
+                           Style="font-weight: 600;">
+                    Back to Post a Study
+                </MudButton>
+
+            </MudContainer>
+        </MudMainContent>
+    </MudLayout>
 }
 
 @code
 {
     private string dataJson = string.Empty;
     private bool mapRenderComplete = false;
+
+    bool drawerOpen = true;
+
+    string selectedStudy = "";
+    string location = "";
+    string selectedAgeGroup = "";
+    string interest = "";
+
+    ParticipantDetails? selectedParticipant = null;
+
+    void ToggleDrawer()
+    {
+        drawerOpen = !drawerOpen;
+    }
+
+    public class ParticipantDetails
+    {
+        public string Name { get; set; } = "John Doe";
+        public string Age { get; set; } = "28";
+        public string Location { get; set; } = "Sheffield, UK";
+        public string Interests { get; set; } = "Psychology, Health Research, Cognitive Science";
+    }
+
+    public void OnParticipantSelected(ParticipantDetails participant)
+    {
+        selectedParticipant = participant;
+        StateHasChanged();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
