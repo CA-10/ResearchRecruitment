@@ -168,7 +168,7 @@ else
                     </MudItem>
 
                     <MudItem xs="12" lg="5">
-                        <MudPaper Elevation="2" Class="pa-6" Style="border-radius: 16px; height: 600px;">
+                        <MudPaper Elevation="2" Class="pa-6" Style="border-radius: 16px; height: 100%;">
                             <MudStack Spacing="4">
 
                                 <MudText Typo="Typo.h6" Style="font-weight: 600;">Participant Details</MudText>
@@ -178,71 +178,22 @@ else
                                 @if (selectedParticipant != null)
                                 {
                                     <MudStack Spacing="3">
-                                        <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Firstname</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Firstname"
-                                                          Variant="Variant.Outlined"
-                                                          ReadOnly="true"
-                                                          Style="border-radius: 8px;" />
-                                        </MudStack>
+                                        <MudTextField Label="Firstname" Variant="Variant.Outlined" ReadOnly="true" @bind-Value="selectedParticipant.Firstname" />
+                                        <MudTextField Label="Lastname" Variant="Variant.Outlined" ReadOnly="true" @bind-Value="selectedParticipant.Lastname" />
+                                        <MudTextField Label="Age" Variant="Variant.Outlined" ReadOnly="true" @bind-Value="selectedParticipant.Age" />
+                                        <MudTextField Label="Gender" Variant="Variant.Outlined" ReadOnly="true" @bind-Value="selectedParticipant.Gender" />
+                                        <MudTextField Label="Nationality" Variant="Variant.Outlined" ReadOnly="true" @bind-Value="selectedParticipant.Nationality" />
+                                        <MudTextField Label="Interests" Variant="Variant.Outlined" ReadOnly="true" @bind-Value="selectedParticipant.Interests" />
+                                    </MudStack>
 
-                                        <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Lastname</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Lastname"
-                                                          Variant="Variant.Outlined"
-                                                          ReadOnly="true"
-                                                          Style="border-radius: 8px;" />
-                                        </MudStack>
+                                    <MudStack Row="true" Spacing="2">
+                                        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Email" FullWidth="true" Style="border-radius: 12px; font-weight: 600;">
+                                            Invite
+                                        </MudButton>
 
-                                        <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Age</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Age"
-                                                          Variant="Variant.Outlined"
-                                                          ReadOnly="true"
-                                                          Style="border-radius: 8px;" />
-                                        </MudStack>
-
-                                        <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Gender</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Gender"
-                                                          Variant="Variant.Outlined"
-                                                          ReadOnly="true"
-                                                          Style="border-radius: 8px;" />
-                                        </MudStack>
-
-                                        <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Nationality</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Nationality"
-                                                          Variant="Variant.Outlined"
-                                                          ReadOnly="true"
-                                                          Style="border-radius: 8px;" />
-                                        </MudStack>
-
-                                        <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Interests</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Interests"
-                                                          Variant="Variant.Outlined"
-                                                          ReadOnly="true"
-                                                          Lines="3"
-                                                          Style="border-radius: 8px;" />
-                                        </MudStack>
-
-                                        <MudStack Row="true" Spacing="2" Class="mt-4">
-                                            <MudButton Variant="Variant.Filled"
-                                                       Color="Color.Primary"
-                                                       StartIcon="@Icons.Material.Filled.Email"
-                                                       FullWidth="true"
-                                                       Style="border-radius: 12px; font-weight: 600;">
-                                                Invite
-                                            </MudButton>
-                                            <MudButton Variant="Variant.Outlined"
-                                                       Color="Color.Primary"
-                                                       StartIcon="@Icons.Material.Filled.ContactMail"
-                                                       FullWidth="true"
-                                                       Style="border-radius: 12px; font-weight: 600;">
-                                                Contact
-                                            </MudButton>
-                                        </MudStack>
+                                        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.ContactMail" FullWidth="true" Style="border-radius: 12px; font-weight: 600;">
+                                            Contact
+                                        </MudButton>
                                     </MudStack>
                                 }
                                 else
