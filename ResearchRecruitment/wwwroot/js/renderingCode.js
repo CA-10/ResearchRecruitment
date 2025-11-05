@@ -1,5 +1,5 @@
 ﻿window.renderingCode = {
-    start: function (apiDataJson) {
+    start: function (apiDataJson, dotNetRef) {
         if (window.myP5) {
             window.myP5.remove();
         }
@@ -500,6 +500,7 @@
 
                 if (hoveredPoint !== null) {
                     console.log('Selected participant:', vectors[hoveredPoint].id);
+                    dotNetRef.invokeMethodAsync("OnParticipantSelected", vectors[hoveredPoint].id.toString());
                 }
             };
         };

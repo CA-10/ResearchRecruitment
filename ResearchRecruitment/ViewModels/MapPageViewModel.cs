@@ -1,4 +1,6 @@
-﻿using ResearchRecruitment.Services;
+﻿using Newtonsoft.Json;
+using ResearchRecruitment.Models;
+using ResearchRecruitment.Services;
 
 namespace ResearchRecruitment.ViewModels;
 
@@ -22,5 +24,17 @@ public class MapPageViewModel : BaseViewModel
 
 		string responseJson = await _apiService.FetchEmbeddingDataAsync();
 		return responseJson;
+	}
+
+	public async Task<ParticipantDetails?> LoadParticipantDataAsync(string participantId)
+	{
+		string responseJson = await _apiService.FetchParticipantDataAsync(participantId);
+
+		if (string.IsNullOrEmpty(responseJson))
+			return null;
+
+		ParticipantDetails? details = JsonConvert.DeserializeObject<ParticipantDetails>(responseJson);
+
+		return details;
 	}
 }
