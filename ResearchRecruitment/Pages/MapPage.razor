@@ -1,10 +1,12 @@
 ﻿@page "/map"
 
 @using ResearchRecruitment.ViewModels
+@using ResearchRecruitment.Models
 
 @inject IJSRuntime JS
 @inject MapPageViewModel viewModel
 @inject ISnackbar snackbar
+@implements IDisposable
 
 <style>
     canvas
@@ -177,8 +179,16 @@ else
                                 {
                                     <MudStack Spacing="3">
                                         <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Participant Name</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Name"
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Firstname</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Firstname"
+                                                          Variant="Variant.Outlined"
+                                                          ReadOnly="true"
+                                                          Style="border-radius: 8px;" />
+                                        </MudStack>
+
+                                        <MudStack Spacing="1">
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Lastname</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Lastname"
                                                           Variant="Variant.Outlined"
                                                           ReadOnly="true"
                                                           Style="border-radius: 8px;" />
@@ -193,8 +203,16 @@ else
                                         </MudStack>
 
                                         <MudStack Spacing="1">
-                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Location</MudText>
-                                            <MudTextField @bind-Value="selectedParticipant.Location"
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Gender</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Gender"
+                                                          Variant="Variant.Outlined"
+                                                          ReadOnly="true"
+                                                          Style="border-radius: 8px;" />
+                                        </MudStack>
+
+                                        <MudStack Spacing="1">
+                                            <MudText Typo="Typo.caption" Style="font-weight: 600; color: #667eea;">Nationality</MudText>
+                                            <MudTextField @bind-Value="selectedParticipant.Nationality"
                                                           Variant="Variant.Outlined"
                                                           ReadOnly="true"
                                                           Style="border-radius: 8px;" />
@@ -262,6 +280,8 @@ else
     private string dataJson = string.Empty;
     private bool mapRenderComplete = false;
 
+    private DotNetObjectReference<MapPage>? objRef;
+
     bool drawerOpen = true;
 
     string selectedStudy = "";
@@ -274,14 +294,6 @@ else
     void ToggleDrawer()
     {
         drawerOpen = !drawerOpen;
-    }
-
-    public class ParticipantDetails
-    {
-        public string Name { get; set; } = "John Doe";
-        public string Age { get; set; } = "28";
-        public string Location { get; set; } = "Sheffield, UK";
-        public string Interests { get; set; } = "Psychology, Health Research, Cognitive Science";
     }
 
     public void OnParticipantSelected(ParticipantDetails participant)
@@ -300,7 +312,8 @@ else
 
         try
         {
-            await JS.InvokeVoidAsync("renderingCode.start", dataJson, "[]");
+            objRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("renderingCode.start", dataJson, objRef);
         }
         catch
         {
@@ -311,5 +324,25 @@ else
             viewModel.IsLoading = false;
             //await InvokeAsync(StateHasChanged);
         }
+    }
+
+    [JSInvokable]
+    public async Task OnParticipantSelected(string participantID)
+    {
+        ParticipantDetails? responseModel = await viewModel.LoadParticipantDataAsync(participantID);
+
+        if (responseModel == null)
+        {
+            snackbar.Add("Error Loading Participant Data. Please Contact Support if Issue Persists", Severity.Error);
+            return;
+        }
+
+        selectedParticipant = responseModel;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        objRef?.Dispose();
     }
 }

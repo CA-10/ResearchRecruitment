@@ -3,4 +3,5 @@
 public interface IApiService
 {
 	public Task<string> FetchEmbeddingDataAsync();
+	public Task<string> FetchParticipantDataAsync(string participantId);
 }
