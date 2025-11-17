@@ -9,13 +9,13 @@ public class ApiService : IApiService
 		_httpClient = new();
 	}
 
-	public async Task<string> FetchEmbeddingDataAsync()
+	public async Task<string> FetchEmbeddingDataAsync(string bitmask = "none")
 	{
 		string json = string.Empty;
 
 		try
 		{
-			var response = await _httpClient.GetAsync("http://localhost:7071/api/UserProfiles");
+			var response = await _httpClient.GetAsync($"http://localhost:7071/api/UserProfiles/{bitmask}");
 			response.EnsureSuccessStatusCode();
 			json = await response.Content.ReadAsStringAsync();
 		}

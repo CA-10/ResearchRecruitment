@@ -2,6 +2,6 @@
 
 public interface IApiService
 {
-	public Task<string> FetchEmbeddingDataAsync();
+	public Task<string> FetchEmbeddingDataAsync(string bitmask = "none");
 	public Task<string> FetchParticipantDataAsync(string participantId);
 }
