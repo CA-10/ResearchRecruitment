@@ -116,45 +116,65 @@ else
                 <MudPaper Elevation="2" Class="pa-4 mb-4" Style="border-radius: 16px;">
                     <MudText Typo="Typo.h6" Class="mb-3" Style="font-weight: 600;">Search by:</MudText>
                     <MudGrid Spacing="3">
-                        <MudItem xs="12" sm="6" md="3">
-                            <MudSelect @bind-Value="selectedStudy"
-                                       Label="Study"
-                                       Variant="Variant.Outlined"
-                                       Style="border-radius: 12px;"
-                                       AnchorOrigin="Origin.BottomCenter">
-                                <MudSelectItem Value="@("Study 1")">Study 1</MudSelectItem>
-                                <MudSelectItem Value="@("Study 2")">Study 2</MudSelectItem>
-                                <MudSelectItem Value="@("Study 3")">Study 3</MudSelectItem>
-                            </MudSelect>
-                        </MudItem>
+                            <MudCheckBox Value="viewModel.GroupByBools[0]"
+                                         ValueChanged="@(async (bool val) =>
+                                             {
+                                                 viewModel.GroupByBools[0] = val;
+                                                 await UpdateMapAsync();
+                                             })"
+                                     ValueExpression="() => viewModel.GroupByBools[0]">
+                                Group By Firstname
+                            </MudCheckBox>
 
-                        <MudItem xs="12" sm="6" md="3">
-                            <MudTextField @bind-Value="location"
-                                          Label="Location"
-                                          Variant="Variant.Outlined"
-                                          Style="border-radius: 12px;" />
-                        </MudItem>
+                            <MudCheckBox Value="viewModel.GroupByBools[1]"
+                                         ValueChanged="@(async (bool val) =>
+                                             {
+                                                 viewModel.GroupByBools[1] = val;
+                                                 await UpdateMapAsync();
+                                             })"
+                                     ValueExpression="() => viewModel.GroupByBools[1]">
+                                Group By Surname
+                            </MudCheckBox>
 
-                        <MudItem xs="12" sm="6" md="3">
-                            <MudSelect @bind-Value="selectedAgeGroup"
-                                       Label="Age Group"
-                                       Variant="Variant.Outlined"
-                                       Style="border-radius: 12px;"
-                                       AnchorOrigin="Origin.BottomCenter">
-                                <MudSelectItem Value="@("18-25")">18-25</MudSelectItem>
-                                <MudSelectItem Value="@("26-35")">26-35</MudSelectItem>
-                                <MudSelectItem Value="@("36-45")">36-45</MudSelectItem>
-                                <MudSelectItem Value="@("46-60")">46-60</MudSelectItem>
-                                <MudSelectItem Value="@("60+")">60+</MudSelectItem>
-                            </MudSelect>
-                        </MudItem>
+                            <MudCheckBox Value="viewModel.GroupByBools[2]"
+                                         ValueChanged="@(async (bool val) =>
+                                             {
+                                                 viewModel.GroupByBools[2] = val;
+                                                 await UpdateMapAsync();
+                                             })"
+                                     ValueExpression="() => viewModel.GroupByBools[2]">
+                                Group By Age
+                            </MudCheckBox>
 
-                        <MudItem xs="12" sm="6" md="3">
-                            <MudTextField @bind-Value="interest"
-                                          Label="Interest"
-                                          Variant="Variant.Outlined"
-                                          Style="border-radius: 12px;" />
-                        </MudItem>
+                            <MudCheckBox Value="viewModel.GroupByBools[3]"
+                                         ValueChanged="@(async (bool val) =>
+                                             {
+                                                 viewModel.GroupByBools[3] = val;
+                                                 await UpdateMapAsync();
+                                             })"
+                                     ValueExpression="() => viewModel.GroupByBools[3]">
+                                Group By Interests
+                            </MudCheckBox>
+
+                            <MudCheckBox Value="viewModel.GroupByBools[4]"
+                                         ValueChanged="@(async (bool val) =>
+                                             {
+                                                 viewModel.GroupByBools[4] = val;
+                                                 await UpdateMapAsync();
+                                             })"
+                                     ValueExpression="() => viewModel.GroupByBools[4]">
+                                Group By Nationality
+                            </MudCheckBox>
+
+                            <MudCheckBox Value="viewModel.GroupByBools[5]"
+                                         ValueChanged="@(async (bool val) =>
+                                             {
+                                                 viewModel.GroupByBools[5] = val;
+                                                 await UpdateMapAsync();
+                                             })"
+                                     ValueExpression="() => viewModel.GroupByBools[5]">
+                                Group By Gender
+                            </MudCheckBox>
                     </MudGrid>
                 </MudPaper>
 
@@ -295,5 +315,11 @@ else
     public void Dispose()
     {
         objRef?.Dispose();
+    }
+
+    private async Task UpdateMapAsync()
+    {
+        dataJson = await viewModel.LoadEmbeddingDataAsync();
+        await JS.InvokeVoidAsync("renderingCode.start", dataJson, objRef);
     }
 }
