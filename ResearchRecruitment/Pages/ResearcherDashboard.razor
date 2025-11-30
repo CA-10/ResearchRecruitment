@@ -67,140 +67,139 @@
     </MudDrawer>
 
     <MudAppBar Elevation="1" Style="background: white;">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" 
-                       Color="Color.Default" 
-                       Edge="Edge.Start" 
-                       OnClick="@ToggleDrawer" />
-        <MudSpacer />
-        <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Home</MudButton>
-        <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 600;">Dashboard</MudButton>
-        <MudButton Href="/post-study" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Post a study</MudButton>
-        <MudButton Href="/map" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Find Participants</MudButton>
-        <MudButton Href="/profile" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Profile</MudButton>
-        <MudButton Href="/logout" Variant="Variant.Text" Color="Color.Error" Style="font-weight: 500;">Log out</MudButton>
+        <MudText Typo="Typo.h2">Welcome back Dr John!</MudText>
     </MudAppBar>
 
     <MudMainContent Style="background: #f5f7fa;">
-        <MudContainer MaxWidth="MaxWidth.Large" Class="my-8">
-            
-            <MudPaper Elevation="0" Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem;">
-                <MudStack Spacing="2">
-                    <MudText Typo="Typo.h4" Style="color: white; font-weight: 700;">
-                        Welcome Dr. Smith!
-                    </MudText>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-5">
+            <MudText Class="my-5" Typo="Typo.h2">Overview</MudText>
 
-                    <MudText Typo="Typo.h6" Style="color: rgba(255,255,255,0.95); font-weight: 400;">
-                        You currently have 3 active studies.
-                    </MudText>
-                </MudStack>
-            </MudPaper>
+            <MudStack Row="true" Spacing="5">
+                <MudPaper Elevation="2" Class="dashboard-card">
+                    <MudIcon Style="background-color: #D398E7" Class="dashboard-card-icon" Icon="@Icons.Material.Rounded.BarChart" />
+                    <MudText Typo="Typo.subtitle1">Total Research Studies Completed</MudText>
+                    <MudText Typo="Typo.h4">53</MudText>
+                </MudPaper>
 
-            <MudPaper Elevation="2" Class="pa-6" Style="border-radius: 20px; min-height: 400px;">
-                <MudStack Spacing="4">
-                    
-                    <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
-                        <MudText Typo="Typo.h5" Style="font-weight: 700;">
-                            Active Studies
-                        </MudText>
-                        <MudButton Variant="Variant.Filled" 
-                                   Color="Color.Primary" 
-                                   EndIcon="@Icons.Material.Filled.ArrowForward"
-                                   Href="/post-study"
-                                   Style="border-radius: 12px; font-weight: 600;">
-                            Post a New Study
-                        </MudButton>
-                    </MudStack>
+                <MudPaper Elevation="2" Class="dashboard-card">
+                    <MudIcon Style="background-color: #E89271" Class="dashboard-card-icon" Icon="@Icons.Material.Rounded.HomeWork" />
+                    <MudText Typo="Typo.subtitle1">Active Case Studies</MudText>
+                    <MudText Typo="Typo.h4"><span style="font-size: 50px;">3</span>/10</MudText>
+                </MudPaper>
 
-                    <MudDivider />
+                <MudPaper Elevation="2" Class="dashboard-card">
+                    <MudIcon Style="background-color: #F0C274" Class="dashboard-card-icon" Icon="@Icons.Material.Rounded.Person" />
+                    <MudText Typo="Typo.subtitle1">Resources</MudText>
+                    <MudText Typo="Typo.h4"><span style="font-size: 50px;">101</span>/120</MudText>
+                </MudPaper>
+            </MudStack>
 
-                    <MudGrid Spacing="4" Class="mt-4">
-                        
-                        <MudItem xs="12" md="6" lg="4">
-                            <MudCard Elevation="3" Style="border-radius: 16px; height: 100%;">
-                                <MudCardContent>
-                                    <MudStack Spacing="2">
-                                        <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start">
-                                            <MudChip T="string" Color="Color.Success" Size="Size.Small" Style="font-weight: 600;">Active</MudChip>
-                                            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" />
-                                        </MudStack>
-                                        <MudText Typo="Typo.h6" Style="font-weight: 600;">
-                                            Study Title Here
-                                        </MudText>
-                                        <MudText Typo="Typo.body2" Color="Color.Secondary">
-                                            Brief description of the research study and its objectives...
-                                        </MudText>
-                                        <MudStack Row="true" Spacing="2" Class="mt-2">
-                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.People">12 Participants</MudChip>
-                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarMonth">30 days</MudChip>
-                                        </MudStack>
-                                    </MudStack>
-                                </MudCardContent>
-                                <MudCardActions>
-                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">View Details</MudButton>
-                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">Manage</MudButton>
-                                </MudCardActions>
-                            </MudCard>
-                        </MudItem>
+            <MudGrid Class="my-5">
+                <MudItem md="8">
+                    <MudPaper Elevation="2" Class="dashboard-card">
+                        <MudGrid>
+                            <MudItem md="6">
+                                <MudText Typo="Typo.h5">Active Studies</MudText>
+                            </MudItem>
 
-                        <MudItem xs="12" md="6" lg="4">
-                            <MudCard Elevation="3" Style="border-radius: 16px; height: 100%;">
-                                <MudCardContent>
-                                    <MudStack Spacing="2">
-                                        <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start">
-                                            <MudChip T="string" Color="Color.Success" Size="Size.Small" Style="font-weight: 600;">Active</MudChip>
-                                            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" />
-                                        </MudStack>
-                                        <MudText Typo="Typo.h6" Style="font-weight: 600;">
-                                            Another Study Title
-                                        </MudText>
-                                        <MudText Typo="Typo.body2" Color="Color.Secondary">
-                                            Brief description of the research study and its objectives...
-                                        </MudText>
-                                        <MudStack Row="true" Spacing="2" Class="mt-2">
-                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.People">8 Participants</MudChip>
-                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarMonth">45 days</MudChip>
-                                        </MudStack>
-                                    </MudStack>
-                                </MudCardContent>
-                                <MudCardActions>
-                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">View Details</MudButton>
-                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">Manage</MudButton>
-                                </MudCardActions>
-                            </MudCard>
-                        </MudItem>
+                            <MudItem md="6">
+                                <MudStack Row="true" Spacing="3">
+                                    <MudSelect Value="@("Studies")" Variant="Variant.Outlined" T="string">
+                                        <MudSelectItem T="string">Studies</MudSelectItem>
+                                    </MudSelect>
 
-                        <MudItem xs="12" md="6" lg="4">
-                            <MudCard Elevation="3" Style="border-radius: 16px; height: 100%;">
-                                <MudCardContent>
-                                    <MudStack Spacing="2">
-                                        <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start">
-                                            <MudChip T="string" Color="Color.Success" Size="Size.Small" Style="font-weight: 600;">Active</MudChip>
-                                            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" />
-                                        </MudStack>
-                                        <MudText Typo="Typo.h6" Style="font-weight: 600;">
-                                            Research Project Name
-                                        </MudText>
-                                        <MudText Typo="Typo.body2" Color="Color.Secondary">
-                                            Brief description of the research study and its objectives...
-                                        </MudText>
-                                        <MudStack Row="true" Spacing="2" Class="mt-2">
-                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.People">15 Participants</MudChip>
-                                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarMonth">60 days</MudChip>
-                                        </MudStack>
-                                    </MudStack>
-                                </MudCardContent>
-                                <MudCardActions>
-                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">View Details</MudButton>
-                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="font-weight: 600;">Manage</MudButton>
-                                </MudCardActions>
-                            </MudCard>
-                        </MudItem>
+                                    <MudSelect Value="@("Participants")" Variant="Variant.Outlined" T="string">
+                                        <MudSelectItem T="string">Participants</MudSelectItem>
+                                    </MudSelect>
 
-                    </MudGrid>
+                                    <MudSelect Value="@("Status")" Variant="Variant.Outlined" T="string">
+                                        <MudSelectItem T="string">Status</MudSelectItem>
+                                    </MudSelect>
+                                </MudStack>
+                            </MudItem>
+                        </MudGrid>
 
-                </MudStack>
-            </MudPaper>
+                        <table class="project-table mt-4" role="table" aria-label="Project status table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Participants</th>
+                                    <th>Due date</th>
+                                    <th>Status</th>
+                                    <th>Progress</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="name">Nelsa web development</td>
+                                    <td>Om prakash sao</td>
+                                    <td>May 25, 2023</td>
+                                    <td><span class="pill completed">Completed</span></td>
+                                    <td>
+                                        <div class="progress" style="--percent:100; --ring:#28a745;">
+                                            <span class="progress-inner">100%</span>
+                                        </div>
+                                    </td>
+                                </tr>
 
+                                <tr>
+                                    <td class="name">Datascale AI app</td>
+                                    <td>Neilson mando</td>
+                                    <td>Jun 20, 2023</td>
+                                    <td><span class="pill delayed">Delayed</span></td>
+                                    <td>
+                                        <div class="progress" style="--percent:35; --ring:#f1c40f;">
+                                            <span class="progress-inner">35%</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="name">Media channel branding</td>
+                                    <td>Tiruvelly priya</td>
+                                    <td>July 13, 2023</td>
+                                    <td><span class="pill atrisk">At risk</span></td>
+                                    <td>
+                                        <div class="progress" style="--percent:68; --ring:#ff4d4f;">
+                                            <span class="progress-inner">68%</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="name">Corlax iOS app developement</td>
+                                    <td>Matte hannery</td>
+                                    <td>Dec 20, 2023</td>
+                                    <td><span class="pill completed">Completed</span></td>
+                                    <td>
+                                        <div class="progress" style="--percent:100; --ring:#28a745;">
+                                            <span class="progress-inner">100%</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="name">Website builder developement</td>
+                                    <td>Sukumar rao</td>
+                                    <td>Mar 15, 2024</td>
+                                    <td><span class="pill ongoing">On going</span></td>
+                                    <td>
+                                        <div class="progress" style="--percent:50; --ring:#6c5ce7;">
+                                            <span class="progress-inner">50%</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem md="4">
+                    <MudPaper Elevation="2" Class="dashboard-card">
+                        hello world
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
         </MudContainer>
     </MudMainContent>
 </MudLayout>
