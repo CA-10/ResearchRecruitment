@@ -3,7 +3,7 @@
 <MudLayout>
     <!-- Sidebar Drawer -->
     <MudDrawer @bind-Open="@drawerOpen" Elevation="2" Variant="@DrawerVariant.Persistent" Style="background: #f8f9fa;">
-        <MudDrawerHeader Style="background: white;">
+        <MudDrawerHeader Style="background: #E7E6F6;">
             <MudStack Spacing="1">
                 <MudText Typo="Typo.h6" Style="font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                     ResearchConnect
@@ -12,7 +12,7 @@
             </MudStack>
         </MudDrawerHeader>
         
-        <MudNavMenu Style="padding: 1rem 0.5rem;">
+        <MudNavMenu Style="padding: 1rem 0.5rem; background: #E7E6F6;">
             <MudNavLink Href="/researcher-dashboard" 
                         Icon="@Icons.Material.Filled.Dashboard" 
                         IconColor="Color.Primary"
@@ -21,46 +21,45 @@
             </MudNavLink>
             
             <MudNavLink Href="/post-study" 
-                        Icon="@Icons.Material.Filled.PostAdd" 
+                        Icon="@Icons.Material.Filled.Work" 
                         IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                Post a Study
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
+                Studies
             </MudNavLink>
             
             <MudNavLink Href="/map" 
-                        Icon="@Icons.Material.Filled.PersonSearch" 
+                        Icon="@Icons.Material.Filled.Groups" 
                         IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                Find Participants
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
+                Participants
             </MudNavLink>
             
             <MudNavLink Href="/invite" 
-                        Icon="@Icons.Material.Filled.Email" 
+                        Icon="@Icons.Material.Filled.SettingsSuggest" 
                         IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
                 Invite
             </MudNavLink>
             
             <MudNavLink Href="/contact" 
-                        Icon="@Icons.Material.Filled.ContactMail" 
+                        Icon="@Icons.Material.Filled.SettingsSuggest" 
                         IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
+                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
                 Contact
             </MudNavLink>
-            
-            <MudNavLink Href="/profile" 
-                        Icon="@Icons.Material.Filled.Person" 
+                        
+            <MudNavLink Icon="@Icons.Material.Filled.Groups"
+                        Href="/profile"
                         IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                Profile
+                        Style="border-radius: 12px; font-weight: 500; color: black;">
+                My Profile
             </MudNavLink>
-            
-            <MudDivider Class="my-4" />
-            
-            <MudNavLink Href="/logout" 
-                        Icon="@Icons.Material.Filled.Logout" 
+
+            <MudNavLink Href="/logout"
+                        Icon="@Icons.Material.Filled.Dashboard"
                         IconColor="Color.Error"
-                        Style="border-radius: 12px; font-weight: 500;">
+                        Style="border-radius: 12px; font-weight: 500;"
+                        Class="logout-button">
                 Logout
             </MudNavLink>
         </MudNavMenu>
@@ -94,8 +93,8 @@
                 </MudPaper>
             </MudStack>
 
-            <MudGrid Class="my-5">
-                <MudItem md="8">
+            <MudGrid Class="my-5" Style="height: 100%;">
+                <MudItem md="8" Style="height: 100%;">
                     <MudPaper Elevation="2" Class="dashboard-card">
                         <MudGrid>
                             <MudItem md="6">
@@ -194,9 +193,9 @@
                     </MudPaper>
                 </MudItem>
 
-                <MudItem md="4">
+                <MudItem md="4" Style="height: 100%;">
                     <MudPaper Elevation="2" Class="dashboard-card">
-                        hello world
+                        <img style="width: 100%;" src="overallprogressdash.png" />                  
                     </MudPaper>
                 </MudItem>
             </MudGrid>
