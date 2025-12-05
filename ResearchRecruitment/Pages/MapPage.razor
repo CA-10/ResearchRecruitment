@@ -23,83 +23,8 @@
 else
 {
     <MudLayout>
-        <MudDrawer @bind-Open="@drawerOpen" Elevation="2" Variant="@DrawerVariant.Persistent" Style="background: #f8f9fa;">
-            <MudDrawerHeader Style="background: white; padding: 1.5rem;">
-                <MudStack Spacing="1">
-                    <MudText Typo="Typo.h6" Style="font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                        ResearchConnect
-                    </MudText>
-                    <MudText Typo="Typo.caption" Color="Color.Secondary">Researcher Portal</MudText>
-                </MudStack>
-            </MudDrawerHeader>
-
-            <MudNavMenu Style="padding: 1rem 0.5rem;">
-                <MudNavLink Href="/researcher-dashboard"
-                            Icon="@Icons.Material.Filled.Dashboard"
-                            IconColor="Color.Primary"
-                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                    Dashboard
-                </MudNavLink>
-
-                <MudNavLink Href="/post-study"
-                            Icon="@Icons.Material.Filled.PostAdd"
-                            IconColor="Color.Primary"
-                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                    Post a Study
-                </MudNavLink>
-
-                <MudNavLink Href="/find-participants"
-                            Icon="@Icons.Material.Filled.PersonSearch"
-                            IconColor="Color.Primary"
-                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                    Find Participants
-                </MudNavLink>
-
-                <MudNavLink Href="/invite"
-                            Icon="@Icons.Material.Filled.Email"
-                            IconColor="Color.Primary"
-                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                    Invite
-                </MudNavLink>
-
-                <MudNavLink Href="/contact"
-                            Icon="@Icons.Material.Filled.ContactMail"
-                            IconColor="Color.Primary"
-                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                    Contact
-                </MudNavLink>
-
-                <MudNavLink Href="/profile"
-                            Icon="@Icons.Material.Filled.Person"
-                            IconColor="Color.Primary"
-                            Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                    Profile
-                </MudNavLink>
-
-                <MudDivider Class="my-4" />
-
-                <MudNavLink Href="/logout"
-                            Icon="@Icons.Material.Filled.Logout"
-                            IconColor="Color.Error"
-                            Style="border-radius: 12px; font-weight: 500;">
-                    Logout
-                </MudNavLink>
-            </MudNavMenu>
-        </MudDrawer>
-
-        <MudAppBar Elevation="1" Style="background: white;">
-            <MudIconButton Icon="@Icons.Material.Filled.Menu"
-                           Color="Color.Default"
-                           Edge="Edge.Start"
-                           OnClick="@ToggleDrawer" />
-            <MudSpacer />
-            <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Home</MudButton>
-            <MudButton Href="/researcher-dashboard" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Dashboard</MudButton>
-            <MudButton Href="/post-study" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Post a Study</MudButton>
-            <MudButton Href="/find-participants" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 600;">Find Participants</MudButton>
-            <MudButton Href="/profile" Variant="Variant.Text" Color="Color.Default" Style="font-weight: 500;">Profile</MudButton>
-            <MudButton Href="/logout" Variant="Variant.Text" Color="Color.Error" Style="font-weight: 500;">Log out</MudButton>
-        </MudAppBar>
+        <Navbar />
+        <Appbar />
 
         <MudMainContent Style="background: #f5f7fa;">
             <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="my-6">

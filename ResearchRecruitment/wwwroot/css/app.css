@@ -307,6 +307,84 @@ code {
     margin-bottom: 20px !important;
 }
 
+.post-study-button {
+    background: white !important;
+    border-radius: 10px !important;
+    color: black !important;
+    margin-bottom: 20px !important;
+}
+
 .logout-button svg {
     color: red !important;
+}
+
+.post-study-button svg {
+    color: white !important;
+    background: #0F0867 !important;
+    font-size: 32px !important;
+    border-radius: 100px !important;
+}
+
+.search-box {
+    flex: 1 !important;
+    background: #fff !important;
+    border-radius: 30px !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.icon-circle {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.icon-circle svg {
+    width: 22px !important;
+    height: 22px !important;
+    stroke: #2c2c6b !important;
+}
+
+.profile-box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: #fff !important;
+    padding: 8px 16px !important;
+    border-radius: 30px !important;
+}
+
+.profile-box img {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+.profile-info {
+    display: flex !important;
+    flex-direction: column !important;
+    font-size: 14px !important;
+}
+
+.profile-name {
+    font-weight: 600 !important;
+}
+
+.profile-role {
+    font-size: 12px !important;
+    color: #777 !important;
+}
+
+.arrow {
+    font-size: 14px !important;
+    color: #555 !important;
+    margin-left: 6px !important;
 }
