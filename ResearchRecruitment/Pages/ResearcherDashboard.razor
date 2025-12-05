@@ -1,73 +1,8 @@
 ﻿@page "/researcher-dashboard"
 
 <MudLayout>
-    <!-- Sidebar Drawer -->
-    <MudDrawer @bind-Open="@drawerOpen" Elevation="2" Variant="@DrawerVariant.Persistent" Style="background: #f8f9fa;">
-        <MudDrawerHeader Style="background: #E7E6F6;">
-            <MudStack Spacing="1">
-                <MudText Typo="Typo.h6" Style="font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    ResearchConnect
-                </MudText>
-                <MudText Typo="Typo.caption" Color="Color.Secondary">Researcher Portal</MudText>
-            </MudStack>
-        </MudDrawerHeader>
-        
-        <MudNavMenu Style="padding: 1rem 0.5rem; background: #E7E6F6;">
-            <MudNavLink Href="/researcher-dashboard" 
-                        Icon="@Icons.Material.Filled.Dashboard" 
-                        IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500;">
-                Dashboard
-            </MudNavLink>
-            
-            <MudNavLink Href="/post-study" 
-                        Icon="@Icons.Material.Filled.Work" 
-                        IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
-                Studies
-            </MudNavLink>
-            
-            <MudNavLink Href="/map" 
-                        Icon="@Icons.Material.Filled.Groups" 
-                        IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
-                Participants
-            </MudNavLink>
-            
-            <MudNavLink Href="/invite" 
-                        Icon="@Icons.Material.Filled.SettingsSuggest" 
-                        IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
-                Invite
-            </MudNavLink>
-            
-            <MudNavLink Href="/contact" 
-                        Icon="@Icons.Material.Filled.SettingsSuggest" 
-                        IconColor="Color.Primary"
-                        Style="border-radius: 12px; margin-bottom: 0.5rem; font-weight: 500; color: black;">
-                Contact
-            </MudNavLink>
-                        
-            <MudNavLink Icon="@Icons.Material.Filled.Groups"
-                        Href="/profile"
-                        IconColor="Color.Primary"
-                        Style="border-radius: 12px; font-weight: 500; color: black;">
-                My Profile
-            </MudNavLink>
-
-            <MudNavLink Href="/logout"
-                        Icon="@Icons.Material.Filled.Dashboard"
-                        IconColor="Color.Error"
-                        Style="border-radius: 12px; font-weight: 500;"
-                        Class="logout-button">
-                Logout
-            </MudNavLink>
-        </MudNavMenu>
-    </MudDrawer>
-
-    <MudAppBar Elevation="1" Style="background: white;">
-        <MudText Typo="Typo.h2">Welcome back Dr John!</MudText>
-    </MudAppBar>
+    <Navbar />
+    <Appbar />
 
     <MudMainContent Style="background: #f5f7fa;">
         <MudContainer MaxWidth="MaxWidth.Large" Class="my-5">
@@ -202,13 +137,3 @@
         </MudContainer>
     </MudMainContent>
 </MudLayout>
-
-@code
-{
-    bool drawerOpen = true;
-
-    private void ToggleDrawer()
-    {
-        drawerOpen = !drawerOpen;
-    }
-}
