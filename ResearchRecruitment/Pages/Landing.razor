@@ -1,67 +1,6 @@
 ﻿@page "/"
 
-<style>
-    .appbar-container {
-        padding: 25px 0;
-        display: flex;
-        justify-content: center;
-        background-color: transparent;
-    }
-
-    .custom-appbar {
-        background-color: white;
-        border-radius: 16px;
-        width: 80%;
-        padding: 15px 30px;
-        border: 1px solid #e2e2e2;
-    }
-
-    .appbar-title {
-        font-weight: 700;
-        font-family: "Georgia", "Times New Roman", serif;
-        color: #0A0A6A; /* Dark navy blue */
-        letter-spacing: 1px;
-    }
-
-    .nav-link {
-        margin-right: 25px;
-        font-size: 1rem;
-        color: #000;
-        text-decoration: none;
-    }
-
-        .nav-link:hover {
-            text-decoration: underline;
-        }
-
-    .login-btn {
-        background-color: #0A0A6A !important;
-        color: white !important;
-        border-radius: 25px;
-        padding: 6px 22px;
-        font-weight: 500;
-    }
-</style>
-
-<MudPaper Elevation="0" Class="appbar-container d-flex justify-center">
-    <MudAppBar Elevation="0" Class="custom-appbar">
-        <!-- Logo / Title -->
-        <MudText Typo="Typo.h5" Class="appbar-title">
-            RESEARCH RECRUIT
-        </MudText>
-
-        <MudSpacer />
-
-        <!-- Navigation Links -->
-        <MudLink Href="/" Class="nav-link">Home</MudLink>
-        <MudLink Href="/about" Class="nav-link">About</MudLink>
-
-        <!-- Login Button -->
-        <MudButton Href="/researcher-dashboard" Class="login-btn" Variant="Variant.Filled">
-            Login
-        </MudButton>
-    </MudAppBar>
-</MudPaper>
+<DashboardAppbar />
 
 <div class="hero-section">
     <MudContainer MaxWidth="MaxWidth.Large" Style="position: relative; z-index: 1;">
@@ -149,6 +88,7 @@
                                FullWidth="true"
                                Size="Size.Large"
                                Class="cta-button"
+                               Href="/register-participant"
                                Style="background: #1a237e; color: white; border-radius: 8px; margin-top: 1rem; font-weight: 600; text-transform: none;">
                         Register as participant
                     </MudButton>

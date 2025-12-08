@@ -1,25 +1,20 @@
-﻿<MudAppBar Elevation="1" Style="background: #f5f7fa;">
-    <div class="d-flex gap-7">
-        <MudText Style="color: black;" Typo="Typo.h4">Welcome back Dr John!</MudText>
-        <input class="search-box" type="text" placeholder="Search for anything..." />
+﻿<MudAppBar Class="pb-3" Elevation="1" Style="background: #f5f7fa;">
+	<MudText Typo="Typo.h5" Style="color: black;">Welcome back Dr John!</MudText>
+	<MudSpacer />
 
-        <div class="icon-circle">
-            <!--Bell Icon-->
-            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22c1.1 0 2-.9 2-2H10c0 1.1.9 2 2 2z" />
-                <path d="M18 16v-5a6 6 0 10-12 0v5l-2 2h16l-2-2z" />
-            </svg>
-        </div>
+	<MudTextField Placeholder="@("Search for anything...")" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Outlined.Search" Style="border-radius: 20px; width: 80%; background: white;" Variant="Variant.Outlined" T="string" />
+	<MudFab Class="ml-3 mr-3" Size="Size.Small" Style="background: white; color: #0A0A6A;" StartIcon="@Icons.Material.Outlined.Notifications" />
 
-        <div class="profile-box">
-            <img src="profilePicture.png" alt="profile" />
+	<MudStack Style="background: white; padding: 10px; border-radius: 20px;" Row>
+		<MudAvatar>
+			<MudImage Src="profilePicture.png"></MudImage>
+		</MudAvatar>
 
-            <div class="profile-info">
-                <span class="profile-name">John Doe</span>
-                <span class="profile-role">Researcher, Rx ltd</span>
-            </div>
+		<MudStack Spacing="0">
+			<MudText Typo="Typo.body1" Style="color: black;">John Doe</MudText>
+			<MudText Typo="Typo.body2" Style="color: darkgray;">Researcher Rx Ltd</MudText>
+		</MudStack>
 
-            <span class="arrow">▼</span>
-        </div>
-    </div>
+		<MudIcon Style="color: black;" Icon="@Icons.Material.Outlined.KeyboardArrowDown" />
+	</MudStack>
 </MudAppBar>

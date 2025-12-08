@@ -1,0 +1,46 @@
+﻿@page "/register-participant"
+
+<DashboardAppbar />
+
+<MudContainer>
+	<MudGrid Spacing="5">
+		<MudItem md="4">
+			<MudText Style="color: #0A0A6A;" Typo="Typo.h2">Register as a Participant</MudText>
+			<MudText Typo="Typo.body1">Create your account to take part in research studies and earn rewards</MudText>
+
+			<MudStack>
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Full Name" T="string" Required />
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Email Address" T="string" Required />
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Password" T="string" Required />
+
+				<MudSelect Variant="Variant.Outlined" Class="blue-border" T="string" Label="Age Range">
+					<MudSelectItem T="string">18-25</MudSelectItem>
+					<MudSelectItem T="string">25-30</MudSelectItem>
+					<MudSelectItem T="string">30-45</MudSelectItem>
+					<MudSelectItem T="string">45-60</MudSelectItem>
+					<MudSelectItem T="string">60+</MudSelectItem>
+				</MudSelect>
+
+				<MudSelect Variant="Variant.Outlined" Class="blue-border" T="string" Label="Interests">
+					<MudSelectItem T="string">Mathematics</MudSelectItem>
+					<MudSelectItem T="string">Biology</MudSelectItem>
+					<MudSelectItem T="string">Physics</MudSelectItem>
+					<MudSelectItem T="string">UI/UX</MudSelectItem>
+				</MudSelect>
+
+				<MudStack Row>
+					<MudIcon Style="color: orange;" Icon="@Icons.Material.Filled.Star" />
+					<MudText>Earn your first 100 points by completing your profile!</MudText>
+				</MudStack>
+				
+				<MudButton Class="mb-4" Style="background: #0A0A6A; color: white; width: 70%; border-radius: 10px;">Create Account</MudButton>
+
+				<div style="margin-bottom: 30px;"></div>
+			</MudStack>
+		</MudItem>
+
+		<MudItem md="8">
+			<MudImage style="margin-left: 300px;" Width="600" Src="register-participant-img.png" Elevation="20" />
+		</MudItem>
+	</MudGrid>
+</MudContainer>
