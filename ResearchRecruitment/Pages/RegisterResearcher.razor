@@ -1,116 +1,36 @@
 ﻿@page "/register-researcher"
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="my-8">
-    <MudAppBar Color="Color.Primary" Elevation="0" Class="px-6">
-        <MudText Typo="Typo.h6" Style="font-weight: 700; color: white;">
-            ResearchConnect
-        </MudText>
-        <MudSpacer />
-        <MudButton Href="/" Variant="Variant.Text" Style="font-weight: 500; color: white;">Home</MudButton>
-        <MudButton Href="#about" Variant="Variant.Text" Style="font-weight: 500; color: white">About</MudButton>
-        <MudButton Href="/researcher-dashboard" Variant="Variant.Filled" Style="border-radius: 20px; padding: 8px 24px; color: white">Login</MudButton>
-    </MudAppBar>
+<DashboardAppbar />
 
-    <MudPaper Elevation="4" Class="pa-8" Style="border-radius: 20px;">
+<MudContainer>
+	<MudGrid Spacing="5">
+		<MudItem md="4">
+			<MudText Style="color: #0A0A6A;" Typo="Typo.h2">Register as a Researcher</MudText>
+			<MudText Typo="Typo.body1">Create your account to post research studies and recruit participants</MudText>
 
-        <!-- Header Section -->
-        <MudStack AlignItems="AlignItems.Center" Spacing="2" Class="mb-6">
-            <MudAvatar Color="Color.Primary" Size="Size.Large" Style="width: 80px; height: 80px;">
-                <MudIcon Icon="@Icons.Material.Filled.Psychology" Size="Size.Large" />
-            </MudAvatar>
-            <MudText Typo="Typo.h4" Align="Align.Center" Style="font-weight: 700;">
-                Register as a Researcher
-            </MudText>
-            <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Secondary" Style="max-width: 500px;">
-                "Create your account to post research studies and recruit participants."
-            </MudText>
-        </MudStack>
+			<MudStack>
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Full Name" T="string" Required />
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Institution / Organization Name" T="string" Required />
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Email Address" T="string" Required />
+				<MudTextField Class="blue-border" Variant="Variant.Outlined" Label="Password" T="string" Required />
 
-        <MudDivider Class="my-6" />
+				<MudSelect Variant="Variant.Outlined" Class="blue-border" T="string" Label="Research Field">
+					<MudSelectItem T="string">Mathematics</MudSelectItem>
+					<MudSelectItem T="string">Biology</MudSelectItem>
+					<MudSelectItem T="string">Physics</MudSelectItem>
+					<MudSelectItem T="string">UI/UX</MudSelectItem>
+				</MudSelect>
 
-        <!-- Registration Form -->
-        <MudForm>
-            <MudStack Spacing="4">
+				<MudCheckBox T="bool">I confirm that my studies comply with ethical standards</MudCheckBox>
 
-                <!-- Full Name -->
-                <MudTextField T="string"
-                              Label="Full Name"
-                              Variant="Variant.Outlined"
-                              Required="true"
-                              RequiredError="Full name is required"
-                              Style="border-radius: 12px;" />
+				<MudButton Class="mb-4" Style="background: #0A0A6A; color: white; width: 70%; border-radius: 10px;">Create Account</MudButton>
 
-                <!-- Institution/Organization -->
-                <MudTextField T="string"
-                              Label="Institution / Organization Name"
-                              Variant="Variant.Outlined"
-                              Required="true"
-                              RequiredError="Institution/Organization name is required"
-                              Style="border-radius: 12px;" />
+				<div style="margin-bottom: 30px;"></div>
+			</MudStack>
+		</MudItem>
 
-                <!-- Email Address -->
-                <MudTextField T="string"
-                              Label="Email Address"
-                              Variant="Variant.Outlined"
-                              InputType="InputType.Email"
-                              Required="true"
-                              RequiredError="Email is required" />
-
-                <!-- Password -->
-                <MudTextField T="string"
-                              Label="Password"
-                              Variant="Variant.Outlined"
-                              InputType="InputType.Password"
-                              Adornment="Adornment.End"
-                              AdornmentAriaLabel="Show Password"
-                              Required="true"
-                              RequiredError="Password is required"
-                              Style="border-radius: 12px;" />
-
-                <!-- Research Field Dropdown -->
-                <MudSelect T="string"
-                           Label="Research Field"
-                           Variant="Variant.Outlined"
-                           Required="true"
-                           RequiredError="Research field is required"
-                           Style="border-radius: 12px;"
-                           AnchorOrigin="Origin.BottomCenter">
-                    <MudSelectItem Value="@("Psychology")">Psychology</MudSelectItem>
-                    <MudSelectItem Value="@("Medicine")">Medicine</MudSelectItem>
-                    <MudSelectItem Value="@("Biology")">Biology</MudSelectItem>
-                    <MudSelectItem Value="@("Sociology")">Sociology</MudSelectItem>
-                    <MudSelectItem Value="@("Education")">Education</MudSelectItem>
-                    <MudSelectItem Value="@("Computer Science")">Computer Science</MudSelectItem>
-                    <MudSelectItem Value="@("Economics")">Economics</MudSelectItem>
-                    <MudSelectItem Value="@("Other")">Other</MudSelectItem>
-                </MudSelect>
-
-                <!-- Ethical Standards Checkbox -->
-                <MudCheckBox T="string"
-                             Label="I confirm that my studies comply with ethical standards."
-                             Color="Color.Primary"
-                             Required="true"
-                             Style="margin-top: 1rem;" />
-
-                <!-- Submit Button -->
-                <MudButton Variant="Variant.Filled"
-                           Color="Color.Primary"
-                           Size="Size.Large"
-                           FullWidth="true"
-                           Style="border-radius: 12px; margin-top: 2rem; padding: 14px; font-weight: 600; font-size: 1rem;">
-                    <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
-                    Create Account
-                </MudButton>
-
-            </MudStack>
-        </MudForm>
-
-        <!-- Additional Info -->
-        <MudStack AlignItems="AlignItems.Center" Class="mt-6">
-            <MudText Typo="Typo.body2" Color="Color.Secondary">
-                Already have an account?
-                <MudLink Href="/researcher-dashboard" Style="font-weight: 600; color: #667eea;">Login here</MudLink>
-            </MudText>
-        </MudStack>
-    </MudPaper>
+		<MudItem md="8">
+			<MudImage style="margin-left: 100px;" Width="800" Src="register-researcher-img.png" Elevation="20" />
+		</MudItem>
+	</MudGrid>
 </MudContainer>

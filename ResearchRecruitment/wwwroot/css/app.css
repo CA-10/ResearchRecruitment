@@ -388,3 +388,61 @@ code {
     color: #555 !important;
     margin-left: 6px !important;
 }
+
+.appbar-container {
+    padding: 25px 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    background-color: transparent !important;
+}
+
+.custom-appbar {
+    background-color: white !important;
+    border-radius: 16px !important;
+    width: 80% !important;
+    padding: 15px 30px !important;
+    border: 1px solid #e2e2e2 !important;
+}
+
+.appbar-title {
+    font-weight: 700 !important;
+    font-family: "Georgia", "Times New Roman", serif !important;
+    color: #0A0A6A !important;
+    letter-spacing: 1px !important;
+}
+
+.nav-link {
+    margin-right: 25px !important;
+    font-size: 1rem !important;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+.nav-link:hover {
+    text-decoration: underline !important;
+}
+
+.login-btn {
+    background-color: #0A0A6A !important;
+    color: white !important;
+    border-radius: 25px !important;
+    padding: 6px 22px !important;
+    font-weight: 500 !important;
+}
+
+.blue-border .mud-input-control-input-container .mud-input-outlined .mud-input-outlined-border {
+    border-color: #0A0A6A !important;
+    border-width: 3px !important;
+    border-radius: 10px !important;
+}
+
+.dashboard-appbar > .mud-appbar {
+    margin-left: 10vw !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    position: absolute !important;
+}
+
+.mud-drawer {
+    top: 0px !important;
+}
